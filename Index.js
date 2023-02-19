@@ -84,7 +84,7 @@ function setValueLine(value){
 
   let valueTemp =JSON.stringify(value);
   const regex =/X\b/
-  
+  console.log(counter)
   //console.log(valueTemp);
   if(regex.test(valueTemp)){
     
@@ -146,32 +146,31 @@ function validateLineWin(letter){
       break;
     }
   }
-  console.log(counter)
+ 
   if (thereWinner){
-    valueSet = true
     showWinner(letter)
   }
   else if(!thereWinner && counter == 9){
-    console.log("Entre por el empate")
+    
     showWinner("E")
   }
   
 }
 
 function showWinner(letter){
-  counter=1
-  valueSet = true
+ 
   //console.log(`Ganan las : ${letter}`);
   let msj = document.getElementById("msjGanador")
   if(letter != "E"){
 
-    msj.innerHTML = `Ganan las : ${letter}`
+    msj.innerHTML = `${letter} WIN `
   }
   else{
 
-    msj.innerHTML = "Empate"
+    msj.innerHTML = "DRAW"
   }
-  
+  counter=0
+  valueSet = true
   dialog.showModal();
     
 }
@@ -181,5 +180,5 @@ const BUTTONCLOSEDIALOG = document.getElementById("closeDialog")
 BUTTONCLOSEDIALOG.addEventListener('click',()=>{
   dialog.close()
   resetTable();
-  
+  valueSet = true
 })
